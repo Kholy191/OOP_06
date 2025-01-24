@@ -58,6 +58,13 @@
             //circle.Area = 40;
             //circle.DisplayShapeInfo();
             #endregion
+
+            #region P2_Q2--
+            //BasicAuthenticationService Person1 = new BasicAuthenticationService() { UserName = "Ahmed", Password = "S13414", Role = "Manager" };
+            //Console.WriteLine(authService.AuthenticateUser("Mahmoud", "13")); 
+            //Console.WriteLine(authService.AuthorizeUser("Dev"));
+            #endregion
+
         }
     }
 
@@ -93,6 +100,37 @@
         public void DisplayShapeInfo()
         {
             Console.WriteLine($"Object is a Rectangle and Area = {Area}");
+        }
+    }
+    #endregion
+
+    #region P2_Q2--
+    public interface IAuthenticationService
+    {
+        bool AuthenticateUser(string userName, string password);
+        bool AuthorizeUser(string role);
+    }
+
+    public class BasicAuthenticationService : IAuthenticationService
+    {
+        public required string UserName { get; set; }
+        public required string Password { get; set; }
+        public required string Role { get; set; }
+
+        public bool AuthenticateUser(string userName, string password)
+        {
+            if (userName == this.UserName && password == this.Password)
+                return true;
+            else
+                return false;
+
+        }
+        public bool AuthorizeUser(string role)
+        {
+            if (role == this.Role)  
+                return true;
+            else
+                return false;
         }
     }
     #endregion
