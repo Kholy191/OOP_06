@@ -65,6 +65,14 @@
             //Console.WriteLine(authService.AuthorizeUser("Dev"));
             #endregion
 
+            #region P2 Q3
+            //EmailNotificationService service = new EmailNotificationService();
+            //PushNotificationService pushNotificationService = new PushNotificationService();
+            //SmsNotificationService smsNotificationService = new SmsNotificationService();
+            //Notification.NotificationDisplay(service, "Ahmed", "Good");
+            //Notification.NotificationDisplay(pushNotificationService, "lol", "fog");
+            //Notification.NotificationDisplay(smsNotificationService,"Zamalek", "fog");
+            #endregion
         }
     }
 
@@ -75,7 +83,7 @@
         void DisplayShapeInfo();
     }
 
-    public interface ICircle : IShape 
+    public interface ICircle : IShape
     {
 
     }
@@ -127,10 +135,49 @@
         }
         public bool AuthorizeUser(string role)
         {
-            if (role == this.Role)  
+            if (role == this.Role)
                 return true;
             else
                 return false;
+        }
+    }
+    #endregion
+
+    #region P2 Q3
+    public interface INotificationService
+    {
+        void SendNotification(string recipient, string message);
+    }
+
+    public class EmailNotificationService : INotificationService
+    {
+        public void SendNotification(string recipient, string message)
+        {
+            Console.WriteLine($"{message}, recipient is {recipient} as email");
+        }
+    }
+
+    public class SmsNotificationService : INotificationService
+    {
+        public void SendNotification(string recipient, string message)
+        {
+            Console.WriteLine($"{message}, recipient is {recipient} as sms");
+        }
+    }
+
+    public class PushNotificationService : INotificationService
+    {
+        public void SendNotification(string recipient, string message)
+        {
+            Console.WriteLine($"{message}, recipient is {recipient} as push");
+        }
+    }
+
+    public class Notification
+    {
+        public static void NotificationDisplay(INotificationService service, string message, string recip)
+        {
+            service.SendNotification(recip, message);
         }
     }
     #endregion
