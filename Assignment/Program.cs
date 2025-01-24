@@ -48,6 +48,52 @@
             #endregion
 
             #endregion
+
+            #region P2 Q1
+            //Rectangle rectangle = new Rectangle();
+            //rectangle.Area = 50;
+            //rectangle.DisplayShapeInfo();
+
+            //Circle circle = new Circle();
+            //circle.Area = 40;
+            //circle.DisplayShapeInfo();
+            #endregion
         }
     }
+
+    #region P2_Q1 
+    public interface IShape
+    {
+        public int Area { get; set; }
+        void DisplayShapeInfo();
+    }
+
+    public interface ICircle : IShape 
+    {
+
+    }
+
+    public interface IRectangle : IShape
+    {
+
+    }
+
+    public class Circle : ICircle
+    {
+        public int Area { get; set; }
+        public void DisplayShapeInfo()
+        {
+            Console.WriteLine($"Object is a Circle and Area = {Area}");
+        }
+    }
+
+    public class Rectangle : IRectangle
+    {
+        public int Area { get; set; }
+        public void DisplayShapeInfo()
+        {
+            Console.WriteLine($"Object is a Rectangle and Area = {Area}");
+        }
+    }
+    #endregion
 }
